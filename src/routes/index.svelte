@@ -63,13 +63,21 @@
 	<div class="container max-w-screen-sm mx-auto">
 		{#if $connected}
 			<header class="pb-4 text-center">
-				<h1 class="text-3xl text-white font-extrabold mb-2">Bored Apes Transfers</h1>
+				<h1 class="text-3xl font-extrabold mb-2">Bored Apes Transfers</h1>
+				<p class="my-4">
+					Built with ♥ by Victor Cheeney - <a
+						class="underline"
+						href="https://github.com/vcheeney/BoredApesTransfers"
+						target="blank">Check out the code on GitHub</a
+					>
+				</p>
 				<p>
 					This app listens to <a
 						class="underline"
 						href="https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d#events"
 						target="blank">Transfer events</a
-					> on the BYAC smart contract. New transfers will be added to the top of the list as they happen.
+					>
+					on the BYAC smart contract. New transfers will be added to the top of the list as they happen.
 				</p>
 			</header>
 			<div class="space-y-4">
