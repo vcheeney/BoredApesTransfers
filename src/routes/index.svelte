@@ -28,7 +28,7 @@
 						if (!transfers.find((t) => t.id === event.id)) {
 							const dataUri = await contract.methods.tokenURI(event.returnValues.tokenId).call();
 							const transfer = await createTransferObject(event, dataUri);
-							transfers = [...transfers, transfer];
+							transfers = [transfer, ...transfers];
 						}
 					}
 				});
@@ -43,7 +43,7 @@
 					} else {
 						const dataUri = await contract.methods.tokenURI(event.returnValues.tokenId).call();
 						const transfer = await createTransferObject(event, dataUri);
-						transfers = [...transfers, transfer];
+						transfers = [transfer, ...transfers];
 					}
 				}
 			);
