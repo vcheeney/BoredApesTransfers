@@ -2,7 +2,7 @@
 
 # Bored Apes Transfers
 
-A simple web3 app that listens to Transfer events on the BYAC smart contract.
+A simple web3 app that listens to Transfer events on the BAYC smart contract.
 
 ## Table of contents <!-- omit in toc -->
 

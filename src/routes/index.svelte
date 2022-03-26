@@ -77,7 +77,7 @@
 						href="https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d#events"
 						target="blank">Transfer events</a
 					>
-					on the BYAC smart contract. New transfers will be added to the top of the list as they happen.
+					on the BAYC smart contract. New transfers will be added to the top of the list as they happen.
 				</p>
 			</header>
 			<div class="space-y-4">
