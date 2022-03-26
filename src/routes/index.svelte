@@ -22,7 +22,7 @@
 
 			contract
 				.getPastEvents('Transfer', {
-					fromBlock: currentBlockNumber - 500,
+					fromBlock: currentBlockNumber - (60 * 60 * 6) / 15,
 					toBlock: 'latest'
 				})
 				.then(async (events) => {
@@ -53,8 +53,11 @@
 	}
 
 	$: setupTransfersListener($contract);
-	$: console.log('transfers', transfers);
 </script>
+
+<svelte:head>
+	<title>Bored Apes Transfers</title>
+</svelte:head>
 
 <div class="bg-orange-600 p-4 h-screen overflow-y-scroll text-white font-semibold">
 	<div class="container max-w-screen-sm mx-auto">
@@ -74,10 +77,35 @@
 					<div class="bg-white rounded-xl overflow-hidden flex shadow-md">
 						<img src={transfer.image} class="w-24 object-cover" alt="NFT Token" />
 						<div class="font-bold p-2 text-gray-400">
-							<p>Token: <span class="text-gray-700">{transfer.tokenId}</span></p>
-							<p>From: <span class="text-gray-700">{formatAccountString(transfer.from)}</span></p>
-							<p>To: <span class="text-gray-700">{formatAccountString(transfer.to)}</span></p>
-							<p>In block <span class="text-gray-700">{transfer.blockNumber}</span></p>
+							<p>
+								ID: <a
+									class="text-gray-700 underline"
+									href={`https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${transfer.tokenId}`}
+									target="blank">{transfer.tokenId}</a
+								>
+							</p>
+							<p>
+								From: <a
+									href={`https://etherscan.io/address/${transfer.from}`}
+									target="blank"
+									class="text-gray-700 underline">{formatAccountString(transfer.from)}</a
+								>
+							</p>
+							<p>
+								To: <a
+									href={`https://etherscan.io/address/${transfer.to}`}
+									target="blank"
+									class="text-gray-700 underline">{formatAccountString(transfer.to)}</a
+								>
+							</p>
+							<p>
+								📦 <a
+									class="text-gray-700 underline"
+									target="blank"
+									href={`https://etherscan.io/block/${transfer.blockNumber}`}
+									>{transfer.blockNumber}</a
+								>
+							</p>
 						</div>
 					</div>
 				{/each}
