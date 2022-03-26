@@ -4,6 +4,7 @@ export type NftTransfer = {
 	to: string;
 	tokenId: string;
 	image: string;
+	blockNumber: number;
 };
 
 export const createTransferObject = async (event: any, dataUri: string): Promise<NftTransfer> => {
@@ -16,6 +17,7 @@ export const createTransferObject = async (event: any, dataUri: string): Promise
 		from: event.returnValues.from,
 		to: event.returnValues.to,
 		tokenId: event.returnValues.tokenId,
-		image: json.imageUrl
+		image: json.imageUrl,
+		blockNumber: event.blockNumber
 	};
 };
