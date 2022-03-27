@@ -29,7 +29,9 @@
 					for (const event of events) {
 						if (!transfers.find((t) => t.id === event.id)) {
 							const dataUri = await contract.methods.tokenURI(event.returnValues.tokenId).call();
-							const transfer = await createTransferObject(event, dataUri);
+							const block = await $web3.eth.getBlock(event.blockNumber);
+							const transferDate = new Date(block.timestamp * 1000);
+							const transfer = await createTransferObject(event, dataUri, transferDate);
 							transfers = [transfer, ...transfers];
 						}
 					}
@@ -44,7 +46,9 @@
 						console.log(error);
 					} else {
 						const dataUri = await contract.methods.tokenURI(event.returnValues.tokenId).call();
-						const transfer = await createTransferObject(event, dataUri);
+						const block = await $web3.eth.getBlock(event.blockNumber);
+						const transferDate = new Date(block.timestamp * 1000);
+						const transfer = await createTransferObject(event, dataUri, transferDate);
 						transfers = [transfer, ...transfers];
 					}
 				}
@@ -112,6 +116,14 @@
 									target="blank"
 									href={`https://etherscan.io/block/${transfer.blockNumber}`}
 									>{transfer.blockNumber}</a
+								>
+							</p>
+							<p>
+								📆 <a
+									class="text-gray-700 underline"
+									target="blank"
+									href={`https://etherscan.io/block/${transfer.blockNumber}`}
+									>{transfer.date.toLocaleString()}</a
 								>
 							</p>
 						</div>

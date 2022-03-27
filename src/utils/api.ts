@@ -5,9 +5,14 @@ export type NftTransfer = {
 	tokenId: string;
 	image: string;
 	blockNumber: number;
+	date: Date;
 };
 
-export const createTransferObject = async (event: any, dataUri: string): Promise<NftTransfer> => {
+export const createTransferObject = async (
+	event: any,
+	dataUri: string,
+	date: Date
+): Promise<NftTransfer> => {
 	const url = `/api?url=${encodeURIComponent(dataUri)}`;
 	const data = await fetch(url);
 	const json = await data.json();
@@ -18,6 +23,7 @@ export const createTransferObject = async (event: any, dataUri: string): Promise
 		to: event.returnValues.to,
 		tokenId: event.returnValues.tokenId,
 		image: json.imageUrl,
-		blockNumber: event.blockNumber
+		blockNumber: event.blockNumber,
+		date
 	};
 };
