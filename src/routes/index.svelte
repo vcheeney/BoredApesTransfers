@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { connected, defaultEvmStores, web3 } from 'svelte-web3';
-	import { createTransferObject, type NftTransfer } from '../utils/api';
-	import { contract } from '../utils/stores';
-	import TransferCard from '../components/TransferCard.svelte';
-	import Header from '../components/Header.svelte';
-	import Container from '../components/Container.svelte';
+
+	import Container from 'src/components/Container.svelte';
+	import Header from 'src/components/Header.svelte';
+	import TransferCard from 'src/components/TransferCard.svelte';
+
+	import { createTransferObject, type NftTransfer } from 'src/utils/api';
+	import { contract } from 'src/utils/stores';
 
 	onMount(async () => {
 		if (window.ethereum) {

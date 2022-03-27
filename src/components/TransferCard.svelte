@@ -1,6 +1,6 @@
 <script>
 	import InfoLine from './InfoLine.svelte';
-	import { formatAccountString } from '../utils/utils';
+	import { formatAccountString } from 'src/utils/strings';
 	export let transfer;
 </script>
 
